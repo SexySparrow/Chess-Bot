@@ -66,9 +66,22 @@ recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
 shuffleOpenings = 0
 StartChildProcess (dir=".") java BoardCenter
-328 >first : xboard
+609 >first : xboard
 protover 2
-355 <first : new
-356 <first : Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 48 out of bounds for length 8
-356 <first : 	at BoardCenter.main(BoardCenter.java:34)
+840 <first : feature sigint=0 sigterm=0 done=1
+840 >first : accepted sigint
+840 >first : accepted sigterm
+840 >first : accepted done
+841 >first : new
+random
+841 >first : level 40 5 0
+841 >first : post
+841 >first : hard
+5956 >first : force
+5957 >first : analyze
+6038 >first : .
+AutoPlayOneMove(): current 0
+7038 >first : exit
+7038 >first : force
 GameEnds(29, xboard exit, 2)
+674483 >first : quit

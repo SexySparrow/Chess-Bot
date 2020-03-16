@@ -17,16 +17,27 @@ public class BoardCenter{
         //Enter data using BufferReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        System.out.println("new");
 
         initBoard(board);
         //printBoard(board);
-
         int myPiece_i = 6;
         int myPiece_j = 0;
+        int force=0;
+	String move = reader.readLine();
         while (true)
         {
-            String move = reader.readLine();
+	    
+            move = reader.readLine();
+	    if(move.equals("protover 2"))
+		{
+			System.out.println("feature sigint=0 sigterm=0 done=1");
+			//move = reader.readLine();
+			
+		}
+	    if(move.equals("force"))
+		force=1;
+	 if(move.length() ==4 && ((move.charAt(1) - 48) - 1) <9)
+	{	
             int j1 = (move.charAt(0) - 'a');
             int i1 = (move.charAt(1) - 48) - 1;
             int j2 = (move.charAt(2) - 'a');
@@ -34,7 +45,7 @@ public class BoardCenter{
             board[i2][j2] = board[i1][j1];
             board[i1][j1] = null;
 
-            if(myPiece_i != 0 && board[myPiece_i -1][myPiece_j] == null)
+            if(myPiece_i != 0 && board[myPiece_i -1][myPiece_j] == null && force==0)
             {
                 System.out.print("move ");
                 System.out.print((char)(myPiece_j + 'a'));
@@ -60,9 +71,13 @@ public class BoardCenter{
                     System.out.print(myPiece_i + 1);
                 }
                 else
+		{
+		
                     break;
+		}
 
                 System.out.println();
+	}
             //printBoard(board);
         }
     }
