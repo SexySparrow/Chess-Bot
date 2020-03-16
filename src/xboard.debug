@@ -66,22 +66,39 @@ recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
 shuffleOpenings = 0
 StartChildProcess (dir=".") java BoardCenter
-609 >first : xboard
+663 >first : xboard
 protover 2
-840 <first : feature sigint=0 sigterm=0 done=1
-840 >first : accepted sigint
-840 >first : accepted sigterm
-840 >first : accepted done
-841 >first : new
+878 <first : feature sigint=0 sigterm=0 done=1
+878 >first : accepted sigint
+878 >first : accepted sigterm
+878 >first : accepted done
+879 >first : new
 random
-841 >first : level 40 5 0
-841 >first : post
-841 >first : hard
-5956 >first : force
-5957 >first : analyze
-6038 >first : .
-AutoPlayOneMove(): current 0
-7038 >first : exit
-7038 >first : force
+879 >first : level 40 5 0
+879 >first : post
+879 >first : hard
+nps: w=-1, b=-1
+nps: w=-1, b=-1
+2252 >first : time 30000
+2252 >first : otim 30000
+book hit = (NULL)
+2253 >first : f2f4
+2331 <first : move a7a6
+3805 >first : time 29992
+3805 >first : otim 29852
+book hit = (NULL)
+3805 >first : b1c3
+3906 <first : move a6a5
+7634 >first : black
+7634 >first : time 29500
+7634 >first : otim 29982
+7634 >first : white
+book hit = (NULL)
+7634 >first : go
+nps: w=-1, b=-1
+7638 <first : move a5a4
+7640 <first : move a4a3
 GameEnds(29, xboard exit, 2)
-674483 >first : quit
+64261 >first : result * {xboard exit}
+64263 >first : force
+64264 >first : quit
