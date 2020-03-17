@@ -66,90 +66,301 @@ recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
 shuffleOpenings = 0
 StartChildProcess (dir=".") java BoardCenter
-391 >first : xboard
+350 >first : xboard
 protover 2
-424 <first : feature sigint=0 sigterm=0 done=1
-424 >first : accepted sigint
-424 >first : accepted sigterm
-424 >first : accepted done
-425 >first : new
+377 <first : feature sigint=0 sigterm=0 done=1
+377 >first : accepted sigint
+377 >first : accepted sigterm
+377 >first : accepted done
+378 >first : new
 random
-425 >first : level 40 5 0
-425 >first : post
-425 >first : hard
+378 >first : level 40 5 0
+378 >first : post
+378 >first : hard
+12808 >first : black
+12808 >first : time 30000
+12808 >first : otim 30000
+12808 >first : white
+book hit = (NULL)
+12808 >first : go
 nps: w=-1, b=-1
+12810 <first : move a2a3
+13157 >first : white
+13157 >first : time 30000
+13157 >first : otim 29999
+13157 >first : black
+book hit = (NULL)
+13157 >first : go
 nps: w=-1, b=-1
-3986 >first : time 30000
-3986 >first : otim 30000
+13163 <first : move a7a6
+13478 >first : black
+13478 >first : time 29999
+13478 >first : otim 29999
+13478 >first : white
 book hit = (NULL)
-3986 >first : d2d4
-4060 <first : move a7a6
-6851 >first : time 29992
-6851 >first : otim 29720
-book hit = (NULL)
-6851 >first : e2e4
-6930 <first : move a6a5
-10403 >first : force
-10403 >first : analyze
-Impossible move a6a5, type = 0
-12429 >first : .
-16399 >first : f2f4
-19056 >first : a5a4
-25114 >first : g2g4
-28152 >first : exit
-28152 >first : force
-28153 >first : white
-28153 >first : time 29984
-28153 >first : otim 29720
-28153 >first : black
-book hit = (NULL)
-28153 >first : go
+13478 >first : go
 nps: w=-1, b=-1
-28153 <first : move a4a3
-31255 >first : time 29984
-31255 >first : otim 29410
+13482 <first : move b2b3
+13791 >first : white
+13791 >first : time 29999
+13791 >first : otim 29999
+13791 >first : black
 book hit = (NULL)
-31255 >first : e4e5
-31334 <first : move a3b2
-33259 >first : time 29976
-33259 >first : otim 29218
+13791 >first : go
+nps: w=-1, b=-1
+13794 <first : move b7b6
+14094 >first : black
+14094 >first : time 29999
+14094 >first : otim 29999
+14094 >first : white
 book hit = (NULL)
-33259 >first : f4f5
-33335 <first : move b2c1
-Reset(1, 1) from gameMode 2
+14094 >first : go
+nps: w=-1, b=-1
+14097 <first : move c2c3
+14342 >first : white
+14342 >first : time 29999
+14342 >first : otim 29999
+14343 >first : black
+book hit = (NULL)
+14343 >first : go
+nps: w=-1, b=-1
+14347 <first : move c7c6
+14632 >first : black
+14632 >first : time 29999
+14632 >first : otim 29998
+14632 >first : white
+book hit = (NULL)
+14632 >first : go
+nps: w=-1, b=-1
+14635 <first : move d2d3
+14838 >first : white
+14838 >first : time 29998
+14838 >first : otim 29998
+14838 >first : black
+book hit = (NULL)
+14838 >first : go
+nps: w=-1, b=-1
+14841 <first : move d7d6
+15110 >first : black
+15110 >first : time 29998
+15110 >first : otim 29998
+15110 >first : white
+book hit = (NULL)
+15110 >first : go
+nps: w=-1, b=-1
+15113 <first : move e2e3
+15322 >first : white
+15322 >first : time 29998
+15322 >first : otim 29998
+15322 >first : black
+book hit = (NULL)
+15322 >first : go
+nps: w=-1, b=-1
+15326 <first : move e7e6
+15557 >first : black
+15557 >first : time 29998
+15557 >first : otim 29998
+15557 >first : white
+book hit = (NULL)
+15557 >first : go
+nps: w=-1, b=-1
+15561 <first : move f2f3
+15783 >first : white
+15783 >first : time 29998
+15783 >first : otim 29998
+15783 >first : black
+book hit = (NULL)
+15783 >first : go
+nps: w=-1, b=-1
+15786 <first : move f7f6
+16385 >first : black
+16385 >first : time 29998
+16385 >first : otim 29997
+16385 >first : white
+book hit = (NULL)
+16385 >first : go
+nps: w=-1, b=-1
+16388 <first : move g2g3
+16611 >first : white
+16611 >first : time 29997
+16611 >first : otim 29997
+16611 >first : black
+book hit = (NULL)
+16611 >first : go
+nps: w=-1, b=-1
+16614 <first : move g7g6
+17153 >first : black
+17153 >first : time 29997
+17153 >first : otim 29997
+17153 >first : white
+book hit = (NULL)
+17153 >first : go
+nps: w=-1, b=-1
+17156 <first : move h2h3
+17566 >first : white
+17566 >first : time 29997
+17566 >first : otim 29997
+17566 >first : black
+book hit = (NULL)
+17566 >first : go
+nps: w=-1, b=-1
+17569 <first : move h7h6
+19228 >first : black
+19228 >first : time 29900
+19228 >first : otim 29997
+19228 >first : white
+book hit = (NULL)
+19228 >first : go
+nps: w=-1, b=-1
+19231 <first : resign
+GameEnds(27, White resigns, 1)
+19232 >first : result 0-1 {White resigns}
+19232 >first : force
+Reset(1, 1) from gameMode 8
 recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
-59974 >first : force
 shuffleOpenings = 0
-59978 >first : new
+32604 >first : new
 random
-59978 >first : level 40 5 0
-59978 >first : post
-59978 >first : hard
-Impossible move b2c1q, type = 0
+32604 >first : level 40 5 0
+32604 >first : post
+32604 >first : hard
+34480 >first : black
+34481 >first : time 30000
+34481 >first : otim 30000
+34481 >first : white
+book hit = (NULL)
+34481 >first : go
 nps: w=-1, b=-1
+34484 <first : move a2a3
+35039 >first : white
+35039 >first : time 30000
+35039 >first : otim 29999
+35039 >first : black
+book hit = (NULL)
+35040 >first : go
 nps: w=-1, b=-1
-61412 >first : time 30000
-61412 >first : otim 30000
+35042 <first : move a7a6
+35389 >first : black
+35389 >first : time 29999
+35389 >first : otim 29999
+35389 >first : white
 book hit = (NULL)
-61412 >first : e2e4
-61487 <first : move a7a6
-62661 >first : time 29992
-62661 >first : otim 29882
+35389 >first : go
+nps: w=-1, b=-1
+35393 <first : move b2b3
+35687 >first : white
+35687 >first : time 29999
+35687 >first : otim 29999
+35687 >first : black
 book hit = (NULL)
-62661 >first : g2g4
-62736 <first : move a6a5
-64747 >first : time 29985
-64747 >first : otim 29681
+35687 >first : go
+nps: w=-1, b=-1
+35691 <first : move b7b6
+35828 >first : black
+35829 >first : time 29999
+35829 >first : otim 29999
+35829 >first : white
 book hit = (NULL)
-64747 >first : h2h4
-64824 <first : move a5a4
-67291 >first : time 29977
-67291 >first : otim 29434
+35829 >first : go
+nps: w=-1, b=-1
+35833 <first : move c2c3
+36030 >first : white
+36030 >first : time 29999
+36030 >first : otim 29999
+36030 >first : black
 book hit = (NULL)
-67291 >first : f2f4
-67366 <first : move a4a3
-GameEnds(29, xboard exit, 2)
-75672 >first : result * {xboard exit}
-75675 >first : force
-75676 >first : quit
+36030 >first : go
+nps: w=-1, b=-1
+36035 <first : move c7c6
+36164 >first : black
+36164 >first : time 29999
+36164 >first : otim 29998
+36164 >first : white
+book hit = (NULL)
+36164 >first : go
+nps: w=-1, b=-1
+36167 <first : move d2d3
+36301 >first : white
+36301 >first : time 29998
+36301 >first : otim 29998
+36301 >first : black
+book hit = (NULL)
+36301 >first : go
+nps: w=-1, b=-1
+36305 <first : move d7d6
+36764 >first : black
+36764 >first : time 29998
+36764 >first : otim 29998
+36764 >first : white
+book hit = (NULL)
+36764 >first : go
+nps: w=-1, b=-1
+36768 <first : move e2e3
+37008 >first : white
+37008 >first : time 29998
+37008 >first : otim 29998
+37008 >first : black
+book hit = (NULL)
+37008 >first : go
+nps: w=-1, b=-1
+37013 <first : move e7e6
+37137 >first : black
+37137 >first : time 29998
+37137 >first : otim 29998
+37137 >first : white
+book hit = (NULL)
+37137 >first : go
+nps: w=-1, b=-1
+37139 <first : move f2f3
+37458 >first : white
+37458 >first : time 29998
+37458 >first : otim 29998
+37458 >first : black
+book hit = (NULL)
+37458 >first : go
+nps: w=-1, b=-1
+37463 <first : move f7f6
+37562 >first : black
+37562 >first : time 29998
+37562 >first : otim 29997
+37562 >first : white
+book hit = (NULL)
+37562 >first : go
+nps: w=-1, b=-1
+37567 <first : move g2g3
+38033 >first : white
+38033 >first : time 29997
+38033 >first : otim 29997
+38033 >first : black
+book hit = (NULL)
+38033 >first : go
+nps: w=-1, b=-1
+38037 <first : move g7g6
+38177 >first : black
+38177 >first : time 29997
+38177 >first : otim 29997
+38177 >first : white
+book hit = (NULL)
+38177 >first : go
+nps: w=-1, b=-1
+38179 <first : move h2h3
+38991 >first : white
+38991 >first : time 29997
+38991 >first : otim 29997
+38991 >first : black
+book hit = (NULL)
+38991 >first : go
+nps: w=-1, b=-1
+38995 <first : move h7h6
+39104 >first : black
+39104 >first : time 29997
+39104 >first : otim 29996
+39104 >first : white
+book hit = (NULL)
+39104 >first : go
+nps: w=-1, b=-1
+39109 <first : resign
+GameEnds(27, White resigns, 1)
+39109 >first : result 0-1 {White resigns}
+39110 >first : force
