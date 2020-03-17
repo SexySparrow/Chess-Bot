@@ -12,5 +12,7 @@ Rulare:
 
 Contributia membrilor:
     Brabete Adrian - Miscarile pionului, alegerea piesei, New Game
+                  
     Popescu Bogdan - Interpretarea comenzilor Xboard: White,Black,Force
+                  
     Dumitrescu Ioana - ierarhia de clase 
