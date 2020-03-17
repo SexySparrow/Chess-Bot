@@ -17,7 +17,13 @@ public class BoardCenter{
         //Enter data using BufferReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        int x = 1;
+        while (x == 1) {
+           x = NewGame(board, reader);
+        }
+    }
 
+    public static int NewGame(Piece[][] board, BufferedReader reader) throws IOException {
         initBoard(board);
         //TODO new
         int myPiece_i = 6;
@@ -26,20 +32,20 @@ public class BoardCenter{
         boolean quit=false;
         boolean black=false;
         boolean white=false;
-	String move = reader.readLine();
+        String move;
         while (true)
         {
-	    
+
         move = reader.readLine();
 	    if(move.equals("protover 2"))
 		{
 			System.out.println("feature sigint=0 sigterm=0 done=1");
-			
+
 		}
-		
+
 		if(move.equals("analyze"))
 		{
-			force=true;	
+			force=true;
 		}
 		if(move.equals("black"))
 		{
@@ -48,15 +54,13 @@ public class BoardCenter{
 		}
 		if(move.equals("white"))
 		{
-			flipMatrix(board);
+			//flipMatrix(board);
 			force=false;
 			white=true;
 		}
 		if(move.equals("new"))
 		{
-			 initBoard(board);
-			 myPiece_i = 6;
-        	 myPiece_j = 0;
+			 return 1;
 		}
 		if(move.equals("quit"))
 		{
@@ -64,9 +68,9 @@ public class BoardCenter{
 			break;
 		}
 
-	 if((move.length() ==4 && ((move.charAt(1) - 48) - 1) <9) || black==true || white==true)
-		{	
-			if(black==false && white==false)
+	 if((move.length() ==4 && ((move.charAt(1) - 48) - 1) <9) || black==true)
+		{
+			if(black==false)
 			{
 				int j1 = (move.charAt(0) - 'a');
             	int i1 = (move.charAt(1) - 48) - 1;
@@ -74,6 +78,12 @@ public class BoardCenter{
            	 	int i2 = (move.charAt(3) - 48) - 1;
            	 	board[i2][j2] = board[i1][j1];
           	  	board[i1][j1] = null;
+
+          	  	if(i1 == myPiece_i && j1 == myPiece_j && force)
+                {
+                    myPiece_i = i2;
+                    myPiece_j = j2;
+                }
           	}
             black=false;
             white=false;
@@ -106,7 +116,7 @@ public class BoardCenter{
                 }
                 else
 				{
-					
+
                     break;
 				}
 
@@ -117,9 +127,10 @@ public class BoardCenter{
         if(!quit)
         {
         	System.out.println("resign");
-        	while(move!=null)
+        	while(!move.equals("new"))
         		move = reader.readLine();
         }
+        return 1;
     }
 
     public static void printBoard(Piece[][] board)

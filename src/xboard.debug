@@ -66,39 +66,90 @@ recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
 shuffleOpenings = 0
 StartChildProcess (dir=".") java BoardCenter
-663 >first : xboard
+391 >first : xboard
 protover 2
-878 <first : feature sigint=0 sigterm=0 done=1
-878 >first : accepted sigint
-878 >first : accepted sigterm
-878 >first : accepted done
-879 >first : new
+424 <first : feature sigint=0 sigterm=0 done=1
+424 >first : accepted sigint
+424 >first : accepted sigterm
+424 >first : accepted done
+425 >first : new
 random
-879 >first : level 40 5 0
-879 >first : post
-879 >first : hard
+425 >first : level 40 5 0
+425 >first : post
+425 >first : hard
 nps: w=-1, b=-1
 nps: w=-1, b=-1
-2252 >first : time 30000
-2252 >first : otim 30000
+3986 >first : time 30000
+3986 >first : otim 30000
 book hit = (NULL)
-2253 >first : f2f4
-2331 <first : move a7a6
-3805 >first : time 29992
-3805 >first : otim 29852
+3986 >first : d2d4
+4060 <first : move a7a6
+6851 >first : time 29992
+6851 >first : otim 29720
 book hit = (NULL)
-3805 >first : b1c3
-3906 <first : move a6a5
-7634 >first : black
-7634 >first : time 29500
-7634 >first : otim 29982
-7634 >first : white
+6851 >first : e2e4
+6930 <first : move a6a5
+10403 >first : force
+10403 >first : analyze
+Impossible move a6a5, type = 0
+12429 >first : .
+16399 >first : f2f4
+19056 >first : a5a4
+25114 >first : g2g4
+28152 >first : exit
+28152 >first : force
+28153 >first : white
+28153 >first : time 29984
+28153 >first : otim 29720
+28153 >first : black
 book hit = (NULL)
-7634 >first : go
+28153 >first : go
 nps: w=-1, b=-1
-7638 <first : move a5a4
-7640 <first : move a4a3
+28153 <first : move a4a3
+31255 >first : time 29984
+31255 >first : otim 29410
+book hit = (NULL)
+31255 >first : e4e5
+31334 <first : move a3b2
+33259 >first : time 29976
+33259 >first : otim 29218
+book hit = (NULL)
+33259 >first : f4f5
+33335 <first : move b2c1
+Reset(1, 1) from gameMode 2
+recognized 'normal' (-1) as variant normal
+GameEnds(0, (null), 2)
+59974 >first : force
+shuffleOpenings = 0
+59978 >first : new
+random
+59978 >first : level 40 5 0
+59978 >first : post
+59978 >first : hard
+Impossible move b2c1q, type = 0
+nps: w=-1, b=-1
+nps: w=-1, b=-1
+61412 >first : time 30000
+61412 >first : otim 30000
+book hit = (NULL)
+61412 >first : e2e4
+61487 <first : move a7a6
+62661 >first : time 29992
+62661 >first : otim 29882
+book hit = (NULL)
+62661 >first : g2g4
+62736 <first : move a6a5
+64747 >first : time 29985
+64747 >first : otim 29681
+book hit = (NULL)
+64747 >first : h2h4
+64824 <first : move a5a4
+67291 >first : time 29977
+67291 >first : otim 29434
+book hit = (NULL)
+67291 >first : f2f4
+67366 <first : move a4a3
 GameEnds(29, xboard exit, 2)
-64261 >first : result * {xboard exit}
-64263 >first : force
-64264 >first : quit
+75672 >first : result * {xboard exit}
+75675 >first : force
+75676 >first : quit
