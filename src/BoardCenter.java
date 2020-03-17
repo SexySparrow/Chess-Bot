@@ -49,13 +49,20 @@ public class BoardCenter{
 		}
 		if(move.equals("black"))
 		{
-			force=false;
+		    if (white)
+		        force=false;
+		    white = false;
 			black=true;
 		}
 		if(move.equals("white"))
 		{
-			//flipMatrix(board);
-			force=false;
+		    if(black) {
+                flipMatrix(board);
+                force=false;
+                myPiece_j = 7 - myPiece_j;
+                myPiece_i = 7 -myPiece_j;
+            }
+		    black = false;
 			white=true;
 		}
 		if(move.equals("new"))
@@ -68,9 +75,9 @@ public class BoardCenter{
 			break;
 		}
 
-	 if((move.length() ==4 && ((move.charAt(1) - 48) - 1) <9) || black==true)
+	 if((move.length() ==4 && ((move.charAt(1) - 48) - 1) <9) || black==true || white == true)
 		{
-			if(black==false)
+			if(black==false && white==false)
 			{
 				int j1 = (move.charAt(0) - 'a');
             	int i1 = (move.charAt(1) - 48) - 1;
@@ -85,10 +92,10 @@ public class BoardCenter{
                     myPiece_j = j2;
                 }
           	}
-            black=false;
-            white=false;
          	if(force)
          		continue;
+            black=false;
+            white=false;
             if(myPiece_i != 0 && board[myPiece_i -1][myPiece_j] == null)
             {
                 System.out.print("move ");
