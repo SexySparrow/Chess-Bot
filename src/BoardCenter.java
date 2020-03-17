@@ -49,19 +49,30 @@ public class BoardCenter{
 		}
 		if(move.equals("black"))
 		{
-		    if (white)
+		    if (white){
 		        force=false;
+		        myPiece_i = 6;
+		        myPiece_j = findmyPawn(board,false);
+		        if(myPiece_j == -1)
+		            break;
+		    }
+		    else
+		        force = true;
 		    white = false;
 			black=true;
 		}
 		if(move.equals("white"))
 		{
 		    if(black) {
-                flipMatrix(board);
+                //flipMatrix(board);
                 force=false;
-                myPiece_j = 7 - myPiece_j;
-                myPiece_i = 7 -myPiece_j;
+                myPiece_i = 1;
+                myPiece_j = findmyPawn(board,true);
+                if(myPiece_j == -1)
+                    break;
             }
+		    else
+		        force = true;
 		    black = false;
 			white=true;
 		}
@@ -96,19 +107,21 @@ public class BoardCenter{
          		continue;
             black=false;
             white=false;
-            if(myPiece_i != 0 && board[myPiece_i -1][myPiece_j] == null)
+            if(!board[myPiece_i][myPiece_j].color)
             {
-                System.out.print("move ");
-                System.out.print((char)(myPiece_j + 'a'));
-                System.out.print(myPiece_i + 1);
-                board[myPiece_i - 1][myPiece_j] = board[myPiece_i][myPiece_j];
-                board[myPiece_i][myPiece_j] = null;
-                myPiece_i--;
+                if(myPiece_i != 0 && board[myPiece_i -1][myPiece_j] == null)
+                {
+                    System.out.print("move ");
+                    System.out.print((char)(myPiece_j + 'a'));
+                    System.out.print(myPiece_i + 1);
+                    board[myPiece_i - 1][myPiece_j] = board[myPiece_i][myPiece_j];
+                    board[myPiece_i][myPiece_j] = null;
+                    myPiece_i--;
 
-                System.out.print((char)(myPiece_j + 'a'));
-                System.out.print(myPiece_i + 1);
-            }
-            else
+                    System.out.print((char)(myPiece_j + 'a'));
+                    System.out.print(myPiece_i + 1);
+                }
+                else
                 if(myPiece_i != 0 && myPiece_j != 7  && board[myPiece_i - 1][myPiece_j + 1] != null)
                 {
                     System.out.print("move ");
@@ -122,10 +135,44 @@ public class BoardCenter{
                     System.out.print(myPiece_i + 1);
                 }
                 else
-				{
+                {
 
                     break;
-				}
+                }
+            }
+            else{
+                if(myPiece_i != 7 && board[myPiece_i + 1][myPiece_j] == null)
+                {
+                    System.out.print("move ");
+                    System.out.print((char)(myPiece_j + 'a'));
+                    System.out.print(myPiece_i + 1);
+                    board[myPiece_i + 1][myPiece_j] = board[myPiece_i][myPiece_j];
+                    board[myPiece_i][myPiece_j] = null;
+                    myPiece_i++;
+
+                    System.out.print((char)(myPiece_j + 'a'));
+                    System.out.print(myPiece_i + 1);
+                }
+                else
+                if(myPiece_i != 7 && myPiece_j != 7  && board[myPiece_i + 1][myPiece_j + 1] != null)
+                {
+                    System.out.print("move ");
+                    System.out.print((char)(myPiece_j + 'a'));
+                    System.out.print(myPiece_i + 1);
+                    board[myPiece_i + 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
+                    board[myPiece_i][myPiece_j] = null;
+                    myPiece_i++;
+                    myPiece_j++;
+                    System.out.print((char)(myPiece_j + 'a'));
+                    System.out.print(myPiece_i + 1);
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+
 
                 System.out.println();
 		}
@@ -139,6 +186,23 @@ public class BoardCenter{
         }
         return 1;
     }
+
+    public static int findmyPawn(Piece[][] board, boolean color){
+        int line;
+        if(color)
+            line = 1;
+        else
+            line = 6;
+
+
+        for (int i = 0; i < 8; i++)
+        {
+            if(board[line][i] instanceof Pawn)
+                return i;
+        }
+        return -1;
+    }
+
 
     public static void printBoard(Piece[][] board)
     {
