@@ -8,4 +8,5 @@ public class King extends Piece {
     public String toString() {
         return " K  ";
     }
+    //TODO implementeaza motode din Piece
 }

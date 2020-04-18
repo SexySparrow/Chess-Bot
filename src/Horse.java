@@ -8,4 +8,6 @@ public class Horse extends Piece {
     public String toString() {
         return " H  ";
     }
+
+    //TODO implementeaza motode din Piece
 }

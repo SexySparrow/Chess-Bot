@@ -8,4 +8,6 @@ public class Bishop extends Piece {
     public String toString() {
         return " B  ";
     }
+
+    //TODO implementeaza motode din Piece
 }
