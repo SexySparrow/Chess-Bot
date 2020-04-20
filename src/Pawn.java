@@ -27,44 +27,9 @@ public class Pawn extends Piece {
 
     @Override
     public void makeMoveBlack(Piece[][] board, Move move, ArrayList<Move> moves) {
-        if(isValid(move.start_x + 1, move.start_y - 1) && board[move.start_x + 1][move.start_y - 1] != null)
-        {
-            if(board[move.start_x + 1][move.start_y - 1].color)
-            {
-                move.final_x = move.start_x + 1;
-                move.final_y = move.start_y - 1;
-                moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,
-                        board[move.start_x + 1][move.start_y - 1].value));
-            }
-        }
-
-        if(isValid(move.start_x + 1, move.start_y + 1) && board[move.start_x + 1][move.start_y + 1] != null)
-        {
-            if(board[move.start_x + 1][move.start_y + 1].color)
-            {
-                move.final_x = move.start_x + 1;
-                move.final_y = move.start_y + 1;
-                move.value = board[move.start_x + 1][move.start_y + 1].value;
-                moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,
-                        board[move.start_x + 1][move.start_y + 1].value));
-            }
-        }
-
-        if(isValid(move.start_x + 1, move.start_y) && board[move.start_x + 1][move.start_y] == null)
-        {
-                move.final_x = move.start_x + 1;
-                move.final_y = move.start_y;
-                moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,0));
-        }
-    }
-
-    @Override
-    public void makeMoveWhite(Piece[][] board, Move move, ArrayList<Move> moves) {
-
         if(isValid(move.start_x - 1, move.start_y - 1) && board[move.start_x - 1][move.start_y - 1] != null)
         {
-            if(board[move.start_x - 1][move.start_y - 1].value > move.value
-                    && !board[move.start_x - 1][move.start_y - 1].color)
+            if(board[move.start_x - 1][move.start_y - 1].color)
             {
                 move.final_x = move.start_x - 1;
                 move.final_y = move.start_y - 1;
@@ -75,8 +40,7 @@ public class Pawn extends Piece {
 
         if(isValid(move.start_x - 1, move.start_y + 1) && board[move.start_x - 1][move.start_y + 1] != null)
         {
-            if(board[move.start_x - 1][move.start_y + 1].value > move.value
-                    && !board[move.start_x - 1][move.start_y + 1].color)
+            if(board[move.start_x - 1][move.start_y + 1].color)
             {
                 move.final_x = move.start_x - 1;
                 move.final_y = move.start_y + 1;
@@ -88,6 +52,41 @@ public class Pawn extends Piece {
         if(isValid(move.start_x - 1, move.start_y) && board[move.start_x - 1][move.start_y] == null)
         {
                 move.final_x = move.start_x - 1;
+                move.final_y = move.start_y;
+                moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,0));
+        }
+    }
+
+    @Override
+    public void makeMoveWhite(Piece[][] board, Move move, ArrayList<Move> moves) {
+
+        if(isValid(move.start_x + 1, move.start_y - 1) && board[move.start_x + 1][move.start_y - 1] != null)
+        {
+            if(board[move.start_x + 1][move.start_y - 1].value > move.value
+                    && !board[move.start_x + 1][move.start_y - 1].color)
+            {
+                move.final_x = move.start_x + 1;
+                move.final_y = move.start_y - 1;
+                moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,
+                        board[move.start_x + 1][move.start_y - 1].value));
+            }
+        }
+
+        if(isValid(move.start_x + 1, move.start_y + 1) && board[move.start_x + 1][move.start_y + 1] != null)
+        {
+            if(board[move.start_x + 1][move.start_y + 1].value > move.value
+                    && !board[move.start_x + 1][move.start_y + 1].color)
+            {
+                move.final_x = move.start_x + 1;
+                move.final_y = move.start_y + 1;
+                moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,
+                        board[move.start_x + 1][move.start_y + 1].value));
+            }
+        }
+
+        if(isValid(move.start_x + 1, move.start_y) && board[move.start_x + 1][move.start_y] == null)
+        {
+                move.final_x = move.start_x + 1;
                 move.final_y = move.start_y;
                 moves.add(new Move(move.start_x,move.start_y,move.final_x,move.final_y,0));
         }

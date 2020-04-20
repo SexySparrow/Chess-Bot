@@ -66,28 +66,50 @@ recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
 shuffleOpenings = 0
 StartChildProcess (dir=".") java BoardCenter
-368 >first : xboard
+339 >first : xboard
 protover 2
-396 <first : feature sigint=0 sigterm=0 done=1
-396 >first : accepted sigint
-396 >first : accepted sigterm
-396 >first : accepted done
-397 >first : new
+367 <first : feature sigint=0 sigterm=0 done=1
+367 >first : accepted sigint
+367 >first : accepted sigterm
+367 >first : accepted done
+368 >first : new
 random
-397 >first : level 40 5 0
-397 >first : post
-397 >first : hard
+368 >first : level 40 5 0
+368 >first : post
+368 >first : hard
 nps: w=-1, b=-1
 nps: w=-1, b=-1
-3250 >first : time 30000
-3250 >first : otim 30000
+3042 >first : time 30000
+3042 >first : otim 30000
 book hit = (NULL)
-3250 >first : e2e4
-3326 <first : Exception in thread "main" java.lang.NullPointerException
-3326 <first : 	at BoardCenter.makeTheMove(BoardCenter.java:180)
-3326 <first : 	at BoardCenter.NewGame(BoardCenter.java:113)
-3326 <first : 	at BoardCenter.main(BoardCenter.java:30)
-GameEnds(27, Error: first chess program (java BoardCenter) exited unexpectedly, 2)
-4207 >first : result 0-1 {Error: first chess program (java BoardCenter) exited unexpectedly}
-4207 >first : force
-4207 >first : quit
+3042 >first : e2e4
+3122 <first : move g8h6
+5035 >first : time 29992
+5035 >first : otim 29808
+book hit = (NULL)
+5035 >first : f2f3
+5113 <first : move h8g8
+6538 >first : time 29984
+6538 >first : otim 29666
+book hit = (NULL)
+6538 >first : d2d3
+6612 <first : move g8h8
+7846 >first : time 29976
+7846 >first : otim 29542
+book hit = (NULL)
+7846 >first : c2c4
+7922 <first : move h8g8
+9444 >first : time 29969
+9444 >first : otim 29390
+book hit = (NULL)
+9444 >first : b2b4
+9523 <first : move g8h8
+11179 >first : time 29961
+11179 >first : otim 29225
+book hit = (NULL)
+11179 >first : a2a4
+11257 <first : move h8g8
+GameEnds(29, xboard exit, 2)
+23527 >first : result * {xboard exit}
+23528 >first : force
+23530 >first : quit

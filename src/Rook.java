@@ -64,7 +64,9 @@ public class Rook extends Piece {
                     move.final_x = x;
                     move.final_y = y;
                     moves.add(new Move(move.start_x, move.start_y, x, y, move.value));
+                    break;
                 }
+                break;
             }
             else
             {

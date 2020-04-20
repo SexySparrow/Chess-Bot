@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Random;
 
 class Pair {
 	public int first;
@@ -22,8 +23,6 @@ public class BoardCenter {
 		//Enter data using BufferReader
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 		//sunt tinute piesele in lista ca sa stim cu e mai putem sa facem miscari;
-		ArrayList<Piece> whites = new ArrayList<>();
-		ArrayList<Piece> blacks = new ArrayList<>();
 
 		int x = 1;
 		while (x == 1) {
@@ -108,62 +107,16 @@ public class BoardCenter {
 					continue;
 				black = false;
 				white = false;
+				ArrayList<Move> moves = new ArrayList<>();
+				Pair pair = minimax_abeta(board, false, 3, Integer.MIN_VALUE, Integer.MAX_VALUE);
+				if (pair.second.value == -5 ) {
+					moves.removeIf(elem -> !moveisValid(board, elem));
 
-				Pair pair = minimax_abeta(board, false, 2, Integer.MIN_VALUE, Integer.MAX_VALUE);
+					Random r = new Random();
+					if(moves.size() > 0)
+						pair.second = moves.get(r.nextInt(moves.size()));
+				}
 				makeTheMove(board, pair.second);
-//				if (!board[myPiece_i][myPiece_j].color) {
-//					if (myPiece_i != 0 && board[myPiece_i - 1][myPiece_j] == null) {
-//						System.out.print("move ");
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//						board[myPiece_i - 1][myPiece_j] = board[myPiece_i][myPiece_j];
-//						board[myPiece_i][myPiece_j] = null;
-//						myPiece_i--;
-//
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//					} else if (myPiece_i != 0 && myPiece_j != 7 && board[myPiece_i - 1][myPiece_j + 1] != null) {
-//						System.out.print("move ");
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//						board[myPiece_i - 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
-//						board[myPiece_i][myPiece_j] = null;
-//						myPiece_i--;
-//						myPiece_j++;
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//					} else {
-//
-//						break;
-//					}
-//				} else {
-//					if (myPiece_i != 7 && board[myPiece_i + 1][myPiece_j] == null) {
-//						System.out.print("move ");
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//						board[myPiece_i + 1][myPiece_j] = board[myPiece_i][myPiece_j];
-//						board[myPiece_i][myPiece_j] = null;
-//						myPiece_i++;
-//
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//					} else if (myPiece_i != 7 && myPiece_j != 7 && board[myPiece_i + 1][myPiece_j + 1] != null) {
-//						System.out.print("move ");
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//						board[myPiece_i + 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
-//						board[myPiece_i][myPiece_j] = null;
-//						myPiece_i++;
-//						myPiece_j++;
-//						System.out.print((char) (myPiece_j + 'a'));
-//						System.out.print(myPiece_i + 1);
-//					} else {
-//						break;
-//					}
-//				}
-
-
-				//System.out.println();
 			}
 			//printBoard(board);
 		}
@@ -175,9 +128,25 @@ public class BoardCenter {
 		return 1;
 	}
 
+	public static boolean moveisValid(Piece[][] board, Move move) {
+		if (move.start_x < 0 || move.start_x > 7)
+			return false;
+		if (move.start_y < 0 || move.start_y > 7)
+			return false;
+		if (move.final_y < 0 || move.final_x > 7)
+			return false;
+		if (move.final_x < 0 || move.final_y > 7)
+			return false;
+
+		if (board[move.start_x][move.start_y] == null)
+			return false;
+		if (board[move.final_x][move.final_y] != null)
+			return board[move.start_x][move.start_y].color != board[move.final_x][move.final_x].color;
+		return true;
+	}
+
 	public static void makeTheMove(Piece[][] board, Move move) {
 		apply_move(board, move);
-		System.out.println(board[move.start_x][move.start_y].value);
 		System.out.print("move ");
 		System.out.print((char) (move.start_y + 'a'));
 		System.out.print(move.start_x + 1);
@@ -201,15 +170,6 @@ public class BoardCenter {
 		return -1;
 	}
 
-
-	public static void printBoard(Piece[][] board) {
-		for (int i = 7; i >= 0; i--) {
-			for (int j = 0; j < 8; j++)
-				System.out.print(board[i][j]);
-			System.out.println();
-		}
-	}
-
 	public static void initBoard(Piece[][] board) {
 		for (int i = 0; i < 8; i++) {
 			board[1][i] = new Pawn(true);
@@ -225,8 +185,8 @@ public class BoardCenter {
 		board[0][6] = new Horse(true);
 		board[0][2] = new Bishop(true);
 		board[0][5] = new Bishop(true);
-		board[0][3] = new King(true);
-		board[0][4] = new Queen(true);
+		board[0][3] = new Queen(true);
+		board[0][4] = new King(true);
 
 
 		board[7][0] = new Rook(false);
@@ -235,28 +195,10 @@ public class BoardCenter {
 		board[7][6] = new Horse(false);
 		board[7][2] = new Bishop(false);
 		board[7][5] = new Bishop(false);
-		board[7][3] = new King(false);
-		board[7][4] = new Queen(false);
+		board[7][3] = new Queen(false);
+		board[7][4] = new King(false);
 	}
 
-	public static void flipMatrix(Piece[][] board) {
-
-		for (int i = 0; i < 4; i++) {
-			for (int j = 0; j < 8; j++) {
-				Piece aux = board[i][j];
-				board[i][j] = board[7 - i][j];
-				board[7 - i][j] = aux;
-			}
-
-		}
-	}
-
-	public static void fillList(ArrayList<Piece> pieces, boolean color, Piece[][] board) {
-		for (int i = 0; i < 8; i++)
-			for (int j = 0; j < 8; j++)
-				if (board[i][j].color == color)
-					pieces.add(board[i][j]);
-	}
 
 	public static ArrayList<Move> get_moves(Piece[][] board, boolean color) {
 		ArrayList<Move> moveList = new ArrayList<>();
@@ -315,7 +257,6 @@ public class BoardCenter {
 
 		ArrayList<Move> moves = get_moves(board, color);
 		Move bestMove = null;
-
 
 		for (Move move : moves) {
 			Piece[][] clone = clone(board);
