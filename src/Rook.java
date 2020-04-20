@@ -85,5 +85,86 @@ public class Rook extends Piece {
             move.final_x = x - increment_x;
         }
     }
+
+    public static void rook (Piece[][] board, int i , int j, ArrayList moveList, boolean color, int depth) {
+
+        int aux_i = i;
+        int aux_j = j;
+        int aux_depth=depth;
+        while (isValid(aux_i+1, aux_j) && aux_depth) {
+            aux_depth--;
+            if(board[aux_i+1][aux_j]==null) {
+                moveList.add(new Move (i,j,aux_i+1, aux_j));
+                aux_i++;
+                continue;
+            }
+            if(board[aux_i+1][aux_j].color == color)
+                break;
+            if(board[aux_i+1][aux_j].color != color) {
+                moveList.add(new Move (i,j,aux_i+1, aux_j));
+                break;
+            }
+            
+        }
+        aux_i = i
+        aux_j = j;
+        aux_depth=depth;
+        while (isValid(aux_i-1, aux_j) && aux_depth) {
+            aux_depth--;
+            if(board[aux_i+1][aux_j]==null) {
+                moveList.add(new Move (i,j,aux_i-1, aux_j));
+                aux_i--;
+                continue;
+            }
+            if(board[aux_i-1][aux_j].color == color)
+                break;
+            if(board[aux_i-1][aux_j].color != color) {
+                moveList.add(new Move (i,j,aux_i-1, aux_j));
+                break;
+            }
+            
+        }
+
+        aux_i = i
+        aux_j = j;
+        aux_depth=depth;
+
+        while (isValid(aux_i, aux_j+1) && aux_depth) {
+            aux_depth--;
+            if(board[aux_i+1][aux_j]==null) {
+                moveList.add(new Move (i,j,aux_i, aux_j+1));
+                aux_j++;
+                continue;
+            }
+            if(board[aux_i][aux_j+1].color == color)
+                break;
+            if(board[aux_i][aux_j+1].color != color) {
+                moveList.add(new Move (i,j,aux_i, aux_j+1));
+                break;
+            }
+            
+        }
+
+        aux_i = i
+        aux_j = j;
+        aux_depth=depth;
+
+        while (isValid(aux_i, aux_j-1) && aux_depth) {
+            aux_depth--;
+            if(board[aux_i+1][aux_j]==null) {
+                moveList.add(new Move (i,j,aux_i, aux_j-1));
+                aux_j--;
+                continue;
+            }
+
+            if(board[aux_i][aux_j-1].color == color)
+                break;
+            if(board[aux_i][aux_j-1].color != color) {
+                moveList.add(new Move (i,j,aux_i, aux_j-1));
+                break;
+            }
+            
+        }
+    }
 }
 

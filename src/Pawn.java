@@ -117,4 +117,28 @@ public class Pawn extends Piece {
 
         return move;
     }
+
+    public static void pawnWhite (Piece[][] board, int i , int j, ArrayList moveList) {
+
+        if (isValid(i+1, j) && board[i+1][j] == null)
+            moveList.add(new Move (i,j,i+1,j));
+        if(isValid (i+1, j-1) && (board[i+1][j-1] == null || board[i+1][j-1].color == false))
+            moveList.add(new Move (i,j,i+1,j-1));
+        if(isValid (i+1, j+1) && (board[i+1][j+1] == null || board[i+1][j+1].color == false))
+            moveList.add(new Move (i,j,i+1,j+1));
+        if(i==1 && board[i+2][j] == null)
+            moveList.add(new Move (i,j,i+2,j));
+    }
+
+    public static void pawnBlack (Piece[][] board, int i , int j, ArrayList moveList) {
+
+        if (isValid(i-1, j) && (board[i-1][j] == null || board[i-1][j].color == true))
+            moveList.add(new Move (i,j,i-1,j));
+        if(isValid (i-1, j-1) && (board[i-1][j-1] == null || board[i-1][j-1].color == true))
+            moveList.add(new Move (i,j,i-1,j-1));
+        if(isValid (i-1, j+1) && (board[i-1][j+1] == null || board[i-1][j+1].color == true))
+            moveList.add(new Move (i,j,i-1,j+1));
+        if(i==6 && board[i-2][j] == null)
+            moveList.add(new Move (i,j,i-2,j));
+    }
 }

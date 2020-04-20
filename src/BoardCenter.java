@@ -3,15 +3,19 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
+class Pair {
+    public int first;
+    public Move second;
+
+    public Pair(int first, Move second) {
+        this.first = first;
+        this.second = second;
+    }
+}
+
 public class BoardCenter {
 
-	/* Chess pieces encoding:
-		K - is King
-		Q - is Queen
-		H - is Knight(Horse)
-		R - is Rook(Tura)
-		P - is Pawn
-		B - is Bishop */
+
 	public static void main(String[] args) throws Exception {
 
 		Piece[][] board = new Piece[8][8];
@@ -238,5 +242,110 @@ public class BoardCenter {
 			for (int j = 0; j < 8; j++)
 				if (board[i][j].color == color)
 					pieces.add(board[i][j]);
+	}
+
+	public ArrayList<Move> get_moves(Piece[][] board, boolean color) {
+		ArrayList<Move> moveList = new ArrayList();
+		for (int i = 0; i < 8; i++)
+			for (int j = 0; j < 8; j++)
+				if (board[i][j].color == color)
+					findAllMoves (board,i,j, board[i][j], moveList, color);
+		return moveList;
+	}
+
+	public static void findAllMoves (Piece[][] board, int i, int j, Piece p, ArrayList moveList, boolean color) {
+
+		if (p instanceof Pawn) {
+			if(color==true)
+				pawnWhite(board,i,j,moveList);
+			else pawnBlack(board,i,j,moveList);
+
+		} else if (p instanceof Rook) {
+			rook(board,i,j,moveList,color,10);
+
+		} else if (p instanceof Bishop) {
+			bishop(board,i,j,moveList,color,10);
+
+		} else if (p instanceof Queen) {
+			queen(board,i,j,moveList,color);
+
+		} else if (p instanceof Horse) {
+			horse(board,i,j,moveList,color);
+
+		} else if (p instanceof King) {
+			king(board,i,j,moveList,color);
+
+		}
+	}
+
+	public int eval (Piece[][] board, boolean color) {
+		int score=0;
+		for (int i = 0; i < 8; i++)
+			for (int j = 0; j < 8; j++) {
+				if(board[i][j]!=null && board[i][j].color==color)
+					score+=board[i][j].value;
+				else if (board[i][j]!=null && board[i][j].color!=color)
+					score-=board[i][j].value;
+			}
+		return score;	
+	}
+
+	public static Piece[][] clone(Piece[][] board) {
+
+		Piece[][] clone = new Piece[8][8];
+
+		for (int i = 0; i < 8; i++)
+			for (int j = 0; j < 8; j++) 
+				clone[i][j]=board[i][j];
+		return clone;
+		
+	}
+	public static boolean apply_move(Piece[][] board, Move move, boolean color) {
+		if(move.start_x==-1)
+			return false;
+		board[move.final_x][move.final_y] = board[move.start_x][move.start_y];
+		board[move.start_x][move.start_y] = null;
+		return true;
+	}
+
+	public static boolean isCheck (Piece[][] board, boolean color) {
+
+		ArrayList<Move> moves = get_moves(board, !color);
+		for (Move move : moves) {
+			if(move.value == 10000)
+				return true;
+		}
+		return false;
+	}
+
+	public static Pair<Integer, Move> minimax_abeta(Piece[][] board, boolean color, int depth, int alfa, int beta) {
+
+		if(depth==0)
+            return new Pair<Integer, Move>(eval(board, color), new Move());
+
+		ArrayList<Move> moves = get_moves(board, color);
+		Move bestMove=null;
+
+
+
+		for (Move move : moves) {
+			Piece[][] clone = clone(board);
+			if(apply_move(clone, move, color) && !isCheck(clone, color)) {
+
+				Pair<Integer,Move> pair = minimax_abeta(clone, color, depth - 1, -beta, -alfa);
+		 		int score  = -pair.first;
+               
+                if (score >= alfa) {
+                    alfa = score;
+                    bestMove = move;
+                }
+
+                if (alfa >= beta) {
+                    break;
+                }
+			}
+		 	
+		}
+		return new Pair<Integer, Move>(alfa, bestMove);	
 	}
 }
