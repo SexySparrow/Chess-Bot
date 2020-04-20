@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public abstract class Piece {
     //true is for white
     //false is for niggers
@@ -6,11 +8,11 @@ public abstract class Piece {
 
     //returneaza, intr-un obiect de tip move, cea mai buna miscare pentru
     //piesa a carei coordonate sunt primite
-    public abstract Move getMove(Piece[][] board , int x, int y);
+    public abstract void getMoves(Piece[][] board , int x, int y, ArrayList<Move> moves);
     //calculeaza miscarile posibile pentru negru
-    public abstract Move makeMoveBlack(Piece[][] board, Move move);
+    public abstract void makeMoveBlack(Piece[][] board, Move move, ArrayList<Move> moves);
     //si pentru alb
-    public abstract Move makeMoveWhite(Piece[][] board, Move move);
+    public abstract void makeMoveWhite(Piece[][] board, Move move, ArrayList<Move> moves);
     //verfica daca indexul se afla pe tabla
     public boolean isValid (int x, int y)
     {
