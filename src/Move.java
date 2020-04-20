@@ -12,5 +12,10 @@ public class Move {
 	}
 
 	public Move() {
+		this.start_x = -1;
+		this.start_y = -1;
+		this.final_x = -1;
+		this.final_y = -1;
+		this.value = -1;
 	}
 }

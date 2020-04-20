@@ -4,13 +4,13 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 class Pair {
-    public int first;
-    public Move second;
+	public int first;
+	public Move second;
 
-    public Pair(int first, Move second) {
-        this.first = first;
-        this.second = second;
-    }
+	public Pair(int first, Move second) {
+		this.first = first;
+		this.second = second;
+	}
 }
 
 public class BoardCenter {
@@ -27,17 +27,17 @@ public class BoardCenter {
 
 		int x = 1;
 		while (x == 1) {
-			x = NewGame(board, reader , whites, blacks);
+			x = NewGame(board, reader);
 		}
 	}
 
-	public static int NewGame(Piece[][] board, BufferedReader reader, ArrayList whites, ArrayList blacks) throws IOException {
+	public static int NewGame(Piece[][] board, BufferedReader reader) throws IOException {
 		initBoard(board);
-		whites = new ArrayList();
-		blacks = new ArrayList();
+		//whites = new ArrayList();
+		//blacks = new ArrayList();
 		//umple listele cu piesele corespunzatoare
-		fillList(whites,true,board);
-		fillList(blacks,false,board);
+		//fillList(whites, true, board);
+		//fillList(blacks, false, board);
 		//TODO new
 		int myPiece_i = 6;
 		int myPiece_j = 0;
@@ -108,59 +108,62 @@ public class BoardCenter {
 					continue;
 				black = false;
 				white = false;
-				if (!board[myPiece_i][myPiece_j].color) {
-					if (myPiece_i != 0 && board[myPiece_i - 1][myPiece_j] == null) {
-						System.out.print("move ");
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-						board[myPiece_i - 1][myPiece_j] = board[myPiece_i][myPiece_j];
-						board[myPiece_i][myPiece_j] = null;
-						myPiece_i--;
 
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-					} else if (myPiece_i != 0 && myPiece_j != 7 && board[myPiece_i - 1][myPiece_j + 1] != null) {
-						System.out.print("move ");
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-						board[myPiece_i - 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
-						board[myPiece_i][myPiece_j] = null;
-						myPiece_i--;
-						myPiece_j++;
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-					} else {
+				Pair pair = minimax_abeta(board, false, 2, Integer.MIN_VALUE, Integer.MAX_VALUE);
+				makeTheMove(board, pair.second);
+//				if (!board[myPiece_i][myPiece_j].color) {
+//					if (myPiece_i != 0 && board[myPiece_i - 1][myPiece_j] == null) {
+//						System.out.print("move ");
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//						board[myPiece_i - 1][myPiece_j] = board[myPiece_i][myPiece_j];
+//						board[myPiece_i][myPiece_j] = null;
+//						myPiece_i--;
+//
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//					} else if (myPiece_i != 0 && myPiece_j != 7 && board[myPiece_i - 1][myPiece_j + 1] != null) {
+//						System.out.print("move ");
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//						board[myPiece_i - 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
+//						board[myPiece_i][myPiece_j] = null;
+//						myPiece_i--;
+//						myPiece_j++;
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//					} else {
+//
+//						break;
+//					}
+//				} else {
+//					if (myPiece_i != 7 && board[myPiece_i + 1][myPiece_j] == null) {
+//						System.out.print("move ");
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//						board[myPiece_i + 1][myPiece_j] = board[myPiece_i][myPiece_j];
+//						board[myPiece_i][myPiece_j] = null;
+//						myPiece_i++;
+//
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//					} else if (myPiece_i != 7 && myPiece_j != 7 && board[myPiece_i + 1][myPiece_j + 1] != null) {
+//						System.out.print("move ");
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//						board[myPiece_i + 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
+//						board[myPiece_i][myPiece_j] = null;
+//						myPiece_i++;
+//						myPiece_j++;
+//						System.out.print((char) (myPiece_j + 'a'));
+//						System.out.print(myPiece_i + 1);
+//					} else {
+//						break;
+//					}
+//				}
 
-						break;
-					}
-				} else {
-					if (myPiece_i != 7 && board[myPiece_i + 1][myPiece_j] == null) {
-						System.out.print("move ");
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-						board[myPiece_i + 1][myPiece_j] = board[myPiece_i][myPiece_j];
-						board[myPiece_i][myPiece_j] = null;
-						myPiece_i++;
 
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-					} else if (myPiece_i != 7 && myPiece_j != 7 && board[myPiece_i + 1][myPiece_j + 1] != null) {
-						System.out.print("move ");
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-						board[myPiece_i + 1][myPiece_j + 1] = board[myPiece_i][myPiece_j];
-						board[myPiece_i][myPiece_j] = null;
-						myPiece_i++;
-						myPiece_j++;
-						System.out.print((char) (myPiece_j + 'a'));
-						System.out.print(myPiece_i + 1);
-					} else {
-						break;
-					}
-				}
-
-
-				System.out.println();
+				//System.out.println();
 			}
 			//printBoard(board);
 		}
@@ -170,6 +173,17 @@ public class BoardCenter {
 				move = reader.readLine();
 		}
 		return 1;
+	}
+
+	public static void makeTheMove(Piece[][] board, Move move) {
+		apply_move(board, move);
+		System.out.println(board[move.start_x][move.start_y].value);
+		System.out.print("move ");
+		System.out.print((char) (move.start_y + 'a'));
+		System.out.print(move.start_x + 1);
+		System.out.print((char) (move.final_y + 'a'));
+		System.out.print(move.final_x + 1);
+		System.out.println();
 	}
 
 	public static int findmyPawn(Piece[][] board, boolean color) {
@@ -237,57 +251,32 @@ public class BoardCenter {
 		}
 	}
 
-	public static void fillList(ArrayList pieces, boolean color, Piece[][] board) {
+	public static void fillList(ArrayList<Piece> pieces, boolean color, Piece[][] board) {
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 8; j++)
 				if (board[i][j].color == color)
 					pieces.add(board[i][j]);
 	}
 
-	public ArrayList<Move> get_moves(Piece[][] board, boolean color) {
-		ArrayList<Move> moveList = new ArrayList();
+	public static ArrayList<Move> get_moves(Piece[][] board, boolean color) {
+		ArrayList<Move> moveList = new ArrayList<>();
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 8; j++)
-				if (board[i][j].color == color)
-					findAllMoves (board,i,j, board[i][j], moveList, color);
+				if (board[i][j] != null && board[i][j].color == color)
+					board[i][j].getMoves(board, i, j, moveList);
 		return moveList;
 	}
 
-	public static void findAllMoves (Piece[][] board, int i, int j, Piece p, ArrayList moveList, boolean color) {
-
-		if (p instanceof Pawn) {
-			if(color==true)
-				pawnWhite(board,i,j,moveList);
-			else pawnBlack(board,i,j,moveList);
-
-		} else if (p instanceof Rook) {
-			rook(board,i,j,moveList,color,10);
-
-		} else if (p instanceof Bishop) {
-			bishop(board,i,j,moveList,color,10);
-
-		} else if (p instanceof Queen) {
-			queen(board,i,j,moveList,color);
-
-		} else if (p instanceof Horse) {
-			horse(board,i,j,moveList,color);
-
-		} else if (p instanceof King) {
-			king(board,i,j,moveList,color);
-
-		}
-	}
-
-	public int eval (Piece[][] board, boolean color) {
-		int score=0;
+	public static int eval(Piece[][] board, boolean color) {
+		int score = 0;
 		for (int i = 0; i < 8; i++)
 			for (int j = 0; j < 8; j++) {
-				if(board[i][j]!=null && board[i][j].color==color)
-					score+=board[i][j].value;
-				else if (board[i][j]!=null && board[i][j].color!=color)
-					score-=board[i][j].value;
+				if (board[i][j] != null && board[i][j].color == color)
+					score += board[i][j].value;
+				else if (board[i][j] != null && board[i][j].color != color)
+					score -= board[i][j].value;
 			}
-		return score;	
+		return score;
 	}
 
 	public static Piece[][] clone(Piece[][] board) {
@@ -295,57 +284,57 @@ public class BoardCenter {
 		Piece[][] clone = new Piece[8][8];
 
 		for (int i = 0; i < 8; i++)
-			for (int j = 0; j < 8; j++) 
-				clone[i][j]=board[i][j];
+			for (int j = 0; j < 8; j++)
+				clone[i][j] = board[i][j];
 		return clone;
-		
+
 	}
-	public static boolean apply_move(Piece[][] board, Move move, boolean color) {
-		if(move.start_x==-1)
+
+	public static boolean apply_move(Piece[][] board, Move move) {
+		if (move.start_x == -1 || move.start_y == -1 || move.final_x == -1 || move.final_y == -1)
 			return false;
 		board[move.final_x][move.final_y] = board[move.start_x][move.start_y];
 		board[move.start_x][move.start_y] = null;
 		return true;
 	}
 
-	public static boolean isCheck (Piece[][] board, boolean color) {
+	public static boolean isCheck(Piece[][] board, boolean color) {
 
 		ArrayList<Move> moves = get_moves(board, !color);
 		for (Move move : moves) {
-			if(move.value == 10000)
+			if (move.value == 10000)
 				return true;
 		}
 		return false;
 	}
 
-	public static Pair<Integer, Move> minimax_abeta(Piece[][] board, boolean color, int depth, int alfa, int beta) {
+	public static Pair minimax_abeta(Piece[][] board, boolean color, int depth, int alfa, int beta) {
 
-		if(depth==0)
-            return new Pair<Integer, Move>(eval(board, color), new Move());
+		if (depth == 0)
+			return new Pair(eval(board, color), new Move());
 
 		ArrayList<Move> moves = get_moves(board, color);
-		Move bestMove=null;
-
+		Move bestMove = null;
 
 
 		for (Move move : moves) {
 			Piece[][] clone = clone(board);
-			if(apply_move(clone, move, color) && !isCheck(clone, color)) {
+			if (apply_move(clone, move) && !isCheck(clone, color)) {
 
-				Pair<Integer,Move> pair = minimax_abeta(clone, color, depth - 1, -beta, -alfa);
-		 		int score  = -pair.first;
-               
-                if (score >= alfa) {
-                    alfa = score;
-                    bestMove = move;
-                }
+				Pair pair = minimax_abeta(clone, color, depth - 1, -beta, -alfa);
+				int score = -pair.first;
 
-                if (alfa >= beta) {
-                    break;
-                }
+				if (score >= alfa) {
+					alfa = score;
+					bestMove = move;
+				}
+
+				if (alfa >= beta) {
+					break;
+				}
 			}
-		 	
+
 		}
-		return new Pair<Integer, Move>(alfa, bestMove);	
+		return new Pair(alfa, bestMove);
 	}
 }

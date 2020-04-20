@@ -27,24 +27,19 @@ public class Horse extends Piece {
 
     @Override
     public void makeMoveBlack(Piece[][] board, Move move, ArrayList<Move> moves) {
-        Move[] moves2 = new Move[8];
-        for (int i = 0; i < 8; i++)
-        {
-            moves2[i].value = Integer.MIN_VALUE;
-            moves2[i].start_x = move.start_x;
-            moves2[i].start_y = move.start_y;
-        }
         int[] index_x = {1,1,2,2,-1,-1,-2,-2};
         int[] index_y = {-2,2,-1,1,-2,2,-1,1};
-
         for (int i = 0; i < 8; i++){
-            moves2[i].final_x = moves2[i].start_x + index_x[i];
-            moves2[i].final_y = moves2[i].start_y + index_y[i];
-            moves2[i] = checkPosition(board, moves2[i]);
+            Move copy = new Move();
+            copy.start_y = move.start_y;
+            copy.start_x = move.start_x;
+            copy.final_x = move.start_x + index_x[i];
+            copy.final_y = move.start_y + index_y[i];
+            copy = checkPosition(board, copy);
 
-            if(moves2[i] != null)
-                moves.add(new Move(moves2[i].start_x,moves2[i].start_y,moves2[i].final_x,
-                        moves2[i].final_y,moves2[i].value));
+            if(copy != null)
+                moves.add(new Move(copy.start_x,copy.start_y,copy.final_x,
+                        copy.final_y,copy.value));
         }
     }
 

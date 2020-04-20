@@ -32,13 +32,16 @@ public class King extends Piece {
 
         for (int i = 0; i < 8; i++)
         {
-            move.final_x = move.start_x + index_x[i];
-            move.final_y = move.start_y + index_y[i];
+            Move copy = new Move();
+            copy.start_y = move.start_y;
+            copy.start_x = move.start_x;
+            copy.final_x = move.start_x + index_x[i];
+            copy.final_y = move.start_y + index_y[i];
+            copy = checkPosition(board, copy);
 
-            move = checkPosition(board, move);
-
-            if(move != null)
-                moves.add(new Move(move.start_x,move.start_y,move.final_x, move.final_y,move.value));
+            if(copy != null)
+                moves.add(new Move(copy.start_x,copy.start_y,copy.final_x,
+                        copy.final_y,copy.value));
         }
     }
 

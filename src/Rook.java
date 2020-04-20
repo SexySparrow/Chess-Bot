@@ -27,21 +27,22 @@ public class Rook extends Piece {
     @Override
     public void makeMoveBlack(Piece[][] board, Move move, ArrayList<Move> moves) {
         Move[] moves2 = new Move[4];
-        for (int i = 0; i < 4; i++)
-        {
-            moves2[i].value = Integer.MIN_VALUE;
-            moves2[i].start_x = move.start_x;
-            moves2[i].start_y = move.start_y;
-        }
+
+//        for (int i = 0; i < 4; i++)
+//        {
+//            moves2[i].value = Integer.MIN_VALUE;
+//            moves2[i].start_x = move.start_x;
+//            moves2[i].start_y = move.start_y;
+//        }
         move.value = Integer.MIN_VALUE;
         //sus
-        bestPosition(board,moves2[0],1,0, moves);
+        bestPosition(board,move,1,0, moves);
         //jos
-        bestPosition(board,moves2[1], -1,0, moves);
+        bestPosition(board,move, -1,0, moves);
         //dreapta
-        bestPosition(board,moves2[2],0,1, moves);
+        bestPosition(board,move,0,1, moves);
         //stanga
-        bestPosition(board,moves2[3], 0,-1, moves);
+        bestPosition(board,move, 0,-1, moves);
     }
     //turele sunt piese simetrice pentru ambele culori
     @Override
@@ -74,85 +75,5 @@ public class Rook extends Piece {
         }
     }
 
-    public static void rook (Piece[][] board, int i , int j, ArrayList moveList, boolean color, int depth) {
-
-        int aux_i = i;
-        int aux_j = j;
-        int aux_depth=depth;
-        while (isValid(aux_i+1, aux_j) && aux_depth) {
-            aux_depth--;
-            if(board[aux_i+1][aux_j]==null) {
-                moveList.add(new Move (i,j,aux_i+1, aux_j));
-                aux_i++;
-                continue;
-            }
-            if(board[aux_i+1][aux_j].color == color)
-                break;
-            if(board[aux_i+1][aux_j].color != color) {
-                moveList.add(new Move (i,j,aux_i+1, aux_j));
-                break;
-            }
-            
-        }
-        aux_i = i
-        aux_j = j;
-        aux_depth=depth;
-        while (isValid(aux_i-1, aux_j) && aux_depth) {
-            aux_depth--;
-            if(board[aux_i+1][aux_j]==null) {
-                moveList.add(new Move (i,j,aux_i-1, aux_j));
-                aux_i--;
-                continue;
-            }
-            if(board[aux_i-1][aux_j].color == color)
-                break;
-            if(board[aux_i-1][aux_j].color != color) {
-                moveList.add(new Move (i,j,aux_i-1, aux_j));
-                break;
-            }
-            
-        }
-
-        aux_i = i
-        aux_j = j;
-        aux_depth=depth;
-
-        while (isValid(aux_i, aux_j+1) && aux_depth) {
-            aux_depth--;
-            if(board[aux_i+1][aux_j]==null) {
-                moveList.add(new Move (i,j,aux_i, aux_j+1));
-                aux_j++;
-                continue;
-            }
-            if(board[aux_i][aux_j+1].color == color)
-                break;
-            if(board[aux_i][aux_j+1].color != color) {
-                moveList.add(new Move (i,j,aux_i, aux_j+1));
-                break;
-            }
-            
-        }
-
-        aux_i = i
-        aux_j = j;
-        aux_depth=depth;
-
-        while (isValid(aux_i, aux_j-1) && aux_depth) {
-            aux_depth--;
-            if(board[aux_i+1][aux_j]==null) {
-                moveList.add(new Move (i,j,aux_i, aux_j-1));
-                aux_j--;
-                continue;
-            }
-
-            if(board[aux_i][aux_j-1].color == color)
-                break;
-            if(board[aux_i][aux_j-1].color != color) {
-                moveList.add(new Move (i,j,aux_i, aux_j-1));
-                break;
-            }
-            
-        }
-    }
 }
 
