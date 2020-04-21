@@ -18,8 +18,6 @@ public abstract class Piece {
     {
         if ( x > 7 || x < 0)
             return false;
-        if ( y > 7 || y < 0)
-            return false;
-        return true;
+        return y <= 7 && y >= 0;
     }
 }
