@@ -1,8 +1,8 @@
 build: 
-	javac *.java
+	javac src/*.java
 
 run:
-	java BoardCenter
+	java src/BoardCenter
 
 clean:
-	rm -f *.class
+	rm -f src/*.class
