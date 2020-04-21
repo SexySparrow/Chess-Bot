@@ -125,7 +125,7 @@ public class BoardCenter {
 						myPiece_j = j2;
 					}
 					if(move.length() == 5 && move.charAt(4) == 'q'){
-						board[i2][j2] = new Queen(!player);
+						board[i2][j2] = new Queen(ok_black);
 					}
 				}
 				if (force)
@@ -142,7 +142,7 @@ public class BoardCenter {
 				
 
 					
-				if(ok_black==true)
+				if(ok_black)
 					pair = minimax_abeta(board, false, 4);
 				else pair = minimax_abeta(board, true, 4);
 				
@@ -182,6 +182,19 @@ public class BoardCenter {
 		System.out.print(move.start_x + 1);
 		System.out.print((char) (move.final_y + 'a'));
 		System.out.print(move.final_x + 1);
+		if(board[move.final_x][move.final_y].color){
+			if(move.final_x == 7 && board[move.final_x][move.final_y] instanceof Pawn) {
+				board[move.final_x][move.final_y] = new Queen(true);
+				System.out.print("q");
+			}
+		}
+		else
+		{
+			if(move.final_x == 0 && board[move.final_x][move.final_y] instanceof Pawn) {
+				board[move.final_x][move.final_y] = new Queen(false);
+				System.out.print("q");
+			}
+		}
 		System.out.println();
 	}
 
