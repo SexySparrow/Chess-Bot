@@ -1,0 +1,75 @@
+recognized 'normal' (-1) as variant normal
+recognized 'normal' (-1) as variant normal
+recognized 'normal' (-1) as variant normal
+shuffleOpenings = 0
+Requested font set for list -*-helvetica-medium-r-normal--12-*-*-*-*-*-*-*,-misc-fixed-medium-r-normal--12-*-*-*-*-*-*-*,-*-*-*-*-*-*-12-*-*-*-*-*-*-*
+ got list -*-helvetica-medium-r-normal--12-*-*-*-*-*-*-*,-misc-fixed-medium-r-normal--12-*-*-*-*-*-*-*,-*-*-*-*-*-*-12-*-*-*-*-*-*-*, locale en_US.UTF-8
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-1
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-1
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-2
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-3
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-4
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-5
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-koi8-r
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-7
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-9
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-13
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-14
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso8859-15
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-jisx0208.1983-0
+ got charset -daewoo-gothic-medium-r-normal--12-87-100-100-c-0-ksc5601.1987-0
+ got charset -isas-fangsong ti-medium-r-normal--12-87-100-100-c-0-gb2312.1980-0
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-jisx0201.1976-0
+ got charset -misc-fixed-medium-r-normal--12-87-100-100-c-0-iso10646-1
+Requested font set for list -*-helvetica-bold-r-normal--24-*-*-*-*-*-*-*,-misc-fixed-bold-r-normal--24-*-*-*-*-*-*-*,-*-*-*-*-*-*-24-*-*-*-*-*-*-*
+ got list -*-helvetica-bold-r-normal--24-*-*-*-*-*-*-*,-misc-fixed-bold-r-normal--24-*-*-*-*-*-*-*,-*-*-*-*-*-*-24-*-*-*-*-*-*-*, locale en_US.UTF-8
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-1
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-1
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-2
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-3
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-4
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-5
+ got charset -misc-fixed-medium-r-normal--24-173-100-100-c-0-koi8-r
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-7
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-9
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-13
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-14
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso8859-15
+ got charset -jis-fixed-medium-r-normal--24-170-100-100-c-240-jisx0208.1983-0
+ got charset -daewoo-mincho-medium-r-normal--24-170-100-100-c-240-ksc5601.1987-0
+ got charset -isas-song ti-medium-r-normal--24-240-72-72-c-240-gb2312.1980-0
+ got charset -sony-fixed-medium-r-normal--24-170-100-100-c-120-jisx0201.1976-0
+ got charset -misc-fixed-bold-r-normal--24-173-100-100-c-0-iso10646-1
+Requested font set for list -*-helvetica-bold-r-normal--10-*-*-*-*-*-*-*,-misc-fixed-bold-r-normal--10-*-*-*-*-*-*-*,-*-*-*-*-*-*-10-*-*-*-*-*-*-*
+ got list -*-helvetica-bold-r-normal--10-*-*-*-*-*-*-*,-misc-fixed-bold-r-normal--10-*-*-*-*-*-*-*,-*-*-*-*-*-*-10-*-*-*-*-*-*-*, locale en_US.UTF-8
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-1
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-1
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-2
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-3
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-4
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-5
+ got charset -misc-fixed-medium-r-normal--10-100-75-75-c-60-koi8-r
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-7
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-9
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-13
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-14
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso8859-15
+ got charset -jis-fixed-medium-r-normal--10-72-100-100-c-0-jisx0208.1983-0
+ got charset -daewoo-gothic-medium-r-normal--10-72-100-100-c-0-ksc5601.1987-0
+ got charset -isas-fangsong ti-medium-r-normal--10-72-100-100-c-0-gb2312.1980-0
+ got charset -misc-fixed-medium-r-normal--10-72-100-100-c-0-jisx0201.1976-0
+ got charset -misc-fixed-bold-r-normal--10-72-100-100-c-0-iso10646-1
+shuffleOpenings = 0
+Version: xboard 4.8.0 + make ()
+Reset(1, 0) from gameMode 0
+recognized 'normal' (-1) as variant normal
+GameEnds(0, (null), 2)
+shuffleOpenings = 0
+StartChildProcess (dir=".") make run
+667 >first : xboard
+protover 2
+680 <first : java src/BoardCenter
+848 <first : Error: Could not find or load main class src.BoardCenter
+852 <first : Makefile:5: recipe for target 'run' failed
+852 <first : make: *** [run] Error 1
+GameEnds(29, xboard exit, 2)

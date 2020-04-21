@@ -45,6 +45,8 @@ public class BoardCenter {
 		boolean black = false;
 		boolean white = false;
 		String move;
+		boolean ok_black=false,ok_white=true;
+		boolean go = false;
 		while (true) {
 
 			move = reader.readLine();
@@ -57,29 +59,35 @@ public class BoardCenter {
 				force = true;
 			}
 			if (move.equals("black")) {
-				if (white) {
-					force = false;
-					myPiece_i = 6;
-					myPiece_j = findmyPawn(board, false);
-					if (myPiece_j == -1)
-						break;
-				} else
-					force = true;
-				white = false;
-				black = true;
+				ok_black=true;
+				ok_white=false;
+				continue;
+				// if (white) {
+				// 	force = false;
+				// 	myPiece_i = 6;
+				// 	myPiece_j = findmyPawn(board, false);
+				// 	if (myPiece_j == -1)
+				// 		break;
+				// } else
+				// 	force = true;
+				// white = false;
+				// black = true;
 			}
 			if (move.equals("white")) {
-				if (black) {
-					//flipMatrix(board);
-					force = false;
-					myPiece_i = 1;
-					myPiece_j = findmyPawn(board, true);
-					if (myPiece_j == -1)
-						break;
-				} else
-					force = true;
-				black = false;
-				white = true;
+				ok_white=true;
+				ok_black=false;
+				continue;
+				// if (black) {
+				// 	//flipMatrix(board);
+				// 	force = false;
+				// 	myPiece_i = 1;
+				// 	myPiece_j = findmyPawn(board, true);
+				// 	if (myPiece_j == -1)
+				// 		break;
+				// } else
+				// 	force = true;
+				// black = false;
+				// white = true;
 			}
 			if (move.equals("new")) {
 				return 1;
@@ -88,8 +96,23 @@ public class BoardCenter {
 				quit = true;
 				break;
 			}
+			if(move.equals("go")) {
+				System.out.println("dashwdas");
+				go = true;
 
-			if ((move.length() == 4 && ((move.charAt(1) - 48) - 1) < 9) || black || white) {
+				Pair pair;
+				ArrayList<Move> moves = new ArrayList<>();
+				if(ok_black==true)
+					pair = minimax_abeta(board, false, 2);
+				else pair = minimax_abeta(board, true, 2);
+				
+				makeTheMove(board, pair.second);
+				continue;
+
+
+			}
+ 			boolean player = false;
+			if (((move.length() == 4 || move.length() == 5) && ((move.charAt(1) - 48) - 1) < 9) || black || white ){
 				if (!black && !white) {
 					int j1 = (move.charAt(0) - 'a');
 					int i1 = (move.charAt(1) - 48) - 1;
@@ -97,25 +120,32 @@ public class BoardCenter {
 					int i2 = (move.charAt(3) - 48) - 1;
 					board[i2][j2] = board[i1][j1];
 					board[i1][j1] = null;
-
 					if (i1 == myPiece_i && j1 == myPiece_j && force) {
 						myPiece_i = i2;
 						myPiece_j = j2;
+					}
+					if(move.length() == 5 && move.charAt(4) == 'q'){
+						board[i2][j2] = new Queen(!player);
 					}
 				}
 				if (force)
 					continue;
 				black = false;
 				white = false;
+				if(!go)
+					continue;
+				System.out.println("qqq");
+				//go=false;
+				//System.out.println("ddd");
+				Pair pair;
 				ArrayList<Move> moves = new ArrayList<>();
-				Pair pair = minimax_abeta(board, false, 3, Integer.MIN_VALUE, Integer.MAX_VALUE);
-				if (pair.second.value == -5 ) {
-					moves.removeIf(elem -> !moveisValid(board, elem));
+				
 
-					Random r = new Random();
-					if(moves.size() > 0)
-						pair.second = moves.get(r.nextInt(moves.size()));
-				}
+					
+				if(ok_black==true)
+					pair = minimax_abeta(board, false, 4);
+				else pair = minimax_abeta(board, true, 4);
+				
 				makeTheMove(board, pair.second);
 			}
 			//printBoard(board);
@@ -224,11 +254,10 @@ public class BoardCenter {
 	public static Piece[][] clone(Piece[][] board) {
 
 		Piece[][] clone = new Piece[8][8];
-
 		for (int i = 0; i < 8; i++)
-			for (int j = 0; j < 8; j++)
-				clone[i][j] = board[i][j];
+			System.arraycopy(board[i], 0, clone[i], 0, 8);
 		return clone;
+
 
 	}
 
@@ -250,32 +279,34 @@ public class BoardCenter {
 		return false;
 	}
 
-	public static Pair minimax_abeta(Piece[][] board, boolean color, int depth, int alfa, int beta) {
+	public static Pair minimax_abeta(Piece[][] board, boolean color, int depth) {
 
 		if (depth == 0)
 			return new Pair(eval(board, color), new Move());
-
+		boolean ok=false;
 		ArrayList<Move> moves = get_moves(board, color);
+		if(moves==null)
+			System.out.println("quit");
 		Move bestMove = null;
-
+		int max = Integer.MIN_VALUE;
 		for (Move move : moves) {
 			Piece[][] clone = clone(board);
 			if (apply_move(clone, move) && !isCheck(clone, color)) {
-
-				Pair pair = minimax_abeta(clone, color, depth - 1, -beta, -alfa);
+				ok=true;
+				Pair pair = minimax_abeta(clone, color, depth - 1);
 				int score = -pair.first;
-
-				if (score >= alfa) {
-					alfa = score;
+				
+				if (score >= max) {
+					max = score;
 					bestMove = move;
+					//System.out.println(bestMove.value + " " + bestMove.final_x + " " + bestMove.final_y);
 				}
 
-				if (alfa >= beta) {
-					break;
-				}
+				
 			}
 
 		}
-		return new Pair(alfa, bestMove);
+		
+		return new Pair(max, bestMove);
 	}
 }
