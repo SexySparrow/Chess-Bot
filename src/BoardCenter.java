@@ -2,7 +2,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Random;
 
 class Pair {
 	public int first;
@@ -22,7 +21,6 @@ public class BoardCenter {
 		Piece[][] board = new Piece[8][8];
 		//Enter data using BufferReader
 		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-		//sunt tinute piesele in lista ca sa stim cu e mai putem sa facem miscari;
 
 		int x = 1;
 		while (x == 1) {
@@ -32,20 +30,11 @@ public class BoardCenter {
 
 	public static int NewGame(Piece[][] board, BufferedReader reader) throws IOException {
 		initBoard(board);
-		//whites = new ArrayList();
-		//blacks = new ArrayList();
-		//umple listele cu piesele corespunzatoare
-		//fillList(whites, true, board);
-		//fillList(blacks, false, board);
-		//TODO new
 		int myPiece_i = 6;
 		int myPiece_j = 0;
 		boolean force = false;
-		boolean quit = false;
-		boolean black = false;
-		boolean white = false;
 		String move;
-		boolean ok_black=false,ok_white=true;
+		boolean ok_black=false;
 		boolean go = false;
 		while (true) {
 
@@ -60,119 +49,57 @@ public class BoardCenter {
 			}
 			if (move.equals("black")) {
 				ok_black=true;
-				ok_white=false;
 				continue;
-				// if (white) {
-				// 	force = false;
-				// 	myPiece_i = 6;
-				// 	myPiece_j = findmyPawn(board, false);
-				// 	if (myPiece_j == -1)
-				// 		break;
-				// } else
-				// 	force = true;
-				// white = false;
-				// black = true;
 			}
 			if (move.equals("white")) {
-				ok_white=true;
 				ok_black=false;
 				continue;
-				// if (black) {
-				// 	//flipMatrix(board);
-				// 	force = false;
-				// 	myPiece_i = 1;
-				// 	myPiece_j = findmyPawn(board, true);
-				// 	if (myPiece_j == -1)
-				// 		break;
-				// } else
-				// 	force = true;
-				// black = false;
-				// white = true;
 			}
 			if (move.equals("new")) {
 				return 1;
 			}
 			if (move.equals("quit")) {
-				quit = true;
 				break;
 			}
 			if(move.equals("go")) {
-				System.out.println("dashwdas");
 				go = true;
-
 				Pair pair;
-				ArrayList<Move> moves = new ArrayList<>();
 				if(ok_black)
-					pair = minimax_abeta(board, false, 4, false);
-				else pair = minimax_abeta(board, true, 4, true);
-				
+					pair = negaMax(board, false, 4, false);
+				else pair = negaMax(board, true, 4, true);
 				makeTheMove(board, pair.second);
 				continue;
-
-
 			}
- 			boolean player = false;
-			if (((move.length() == 4 || move.length() == 5) && ((move.charAt(1) - 48) - 1) < 9) || black || white ){
-				if (!black && !white) {
-					int j1 = (move.charAt(0) - 'a');
-					int i1 = (move.charAt(1) - 48) - 1;
-					int j2 = (move.charAt(2) - 'a');
-					int i2 = (move.charAt(3) - 48) - 1;
-					board[i2][j2] = board[i1][j1];
-					board[i1][j1] = null;
-					if (i1 == myPiece_i && j1 == myPiece_j && force) {
-						myPiece_i = i2;
-						myPiece_j = j2;
-					}
-					if(move.length() == 5 && move.charAt(4) == 'q'){
-						board[i2][j2] = new Queen(ok_black);
-					}
+
+			if ((move.length() == 4 || move.length() == 5) && move.charAt(1) - 48 - 1 < 9){
+				int j1 = (move.charAt(0) - 'a');
+				int i1 = (move.charAt(1) - 48) - 1;
+				int j2 = (move.charAt(2) - 'a');
+				int i2 = (move.charAt(3) - 48) - 1;
+				board[i2][j2] = board[i1][j1];
+				board[i1][j1] = null;
+				if (i1 == myPiece_i && j1 == myPiece_j && force) {
+					myPiece_i = i2;
+					myPiece_j = j2;
+				}
+				if(move.length() == 5 && move.charAt(4) == 'q'){
+					board[i2][j2] = new Queen(ok_black);
 				}
 				if (force)
 					continue;
-				black = false;
-				white = false;
 				if(!go)
 					continue;
-				System.out.println("qqq");
-				//go=false;
-				//System.out.println("ddd");
 				Pair pair;
-				ArrayList<Move> moves = new ArrayList<>();
-				
 
-					
+
 				if(ok_black)
-					pair = minimax_abeta(board, false, 4, false);
-				else pair = minimax_abeta(board, true, 4, true);
+					pair = negaMax(board, false, 4, false);
+				else pair = negaMax(board, true, 4, true);
 				
 				makeTheMove(board, pair.second);
 			}
-			//printBoard(board);
-		}
-		if (!quit) {
-			System.out.println("resign");
-			while (!move.equals("new"))
-				move = reader.readLine();
 		}
 		return 1;
-	}
-
-	public static boolean moveisValid(Piece[][] board, Move move) {
-		if (move.start_x < 0 || move.start_x > 7)
-			return false;
-		if (move.start_y < 0 || move.start_y > 7)
-			return false;
-		if (move.final_y < 0 || move.final_x > 7)
-			return false;
-		if (move.final_x < 0 || move.final_y > 7)
-			return false;
-
-		if (board[move.start_x][move.start_y] == null)
-			return false;
-		if (board[move.final_x][move.final_y] != null)
-			return board[move.start_x][move.start_y].color != board[move.final_x][move.final_x].color;
-		return true;
 	}
 
 	public static void makeTheMove(Piece[][] board, Move move) {
@@ -196,21 +123,6 @@ public class BoardCenter {
 			}
 		}
 		System.out.println();
-	}
-
-	public static int findmyPawn(Piece[][] board, boolean color) {
-		int line;
-		if (color)
-			line = 1;
-		else
-			line = 6;
-
-
-		for (int i = 0; i < 8; i++) {
-			if (board[line][i] instanceof Pawn)
-				return i;
-		}
-		return -1;
 	}
 
 	public static void initBoard(Piece[][] board) {
@@ -294,29 +206,23 @@ public class BoardCenter {
 		return false;
 	}
 
-	public static Pair minimax_abeta(Piece[][] board, boolean color, int depth, boolean player_color) {
+	public static Pair negaMax(Piece[][] board, boolean color, int depth, boolean player_color) {
 
 		if (depth == 0)
 			return new Pair(eval(board, color), new Move());
-		boolean ok=false;
 		ArrayList<Move> moves = get_moves(board, color);
-
-		if(moves==null)
-			System.out.println("quit");
 
 		Move bestMove = null;
 		int max = Integer.MIN_VALUE;
 		for (Move move : moves) {
 			Piece[][] clone = clone(board);
 			if (apply_move(clone, move) && !isCheck(clone, player_color)) {
-				ok=true;
-				Pair pair = minimax_abeta(clone, !color, depth - 1, player_color);
+				Pair pair = negaMax(clone, !color, depth - 1, player_color);
 				int score = -pair.first;
 				
 				if (score >= max) {
 					max = score;
 					bestMove = move;
-					//System.out.println(bestMove.value + " " + bestMove.final_x + " " + bestMove.final_y);
 				}
 
 			}
