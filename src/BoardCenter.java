@@ -103,8 +103,8 @@ public class BoardCenter {
 				Pair pair;
 				ArrayList<Move> moves = new ArrayList<>();
 				if(ok_black==true)
-					pair = minimax_abeta(board, false, 2);
-				else pair = minimax_abeta(board, true, 2);
+					pair = minimax_abeta(board, false, 4);
+				else pair = minimax_abeta(board, true, 4);
 				
 				makeTheMove(board, pair.second);
 				continue;
@@ -285,15 +285,17 @@ public class BoardCenter {
 			return new Pair(eval(board, color), new Move());
 		boolean ok=false;
 		ArrayList<Move> moves = get_moves(board, color);
+
 		if(moves==null)
 			System.out.println("quit");
+
 		Move bestMove = null;
 		int max = Integer.MIN_VALUE;
 		for (Move move : moves) {
 			Piece[][] clone = clone(board);
 			if (apply_move(clone, move) && !isCheck(clone, color)) {
 				ok=true;
-				Pair pair = minimax_abeta(clone, color, depth - 1);
+				Pair pair = minimax_abeta(clone, !color, depth - 1);
 				int score = -pair.first;
 				
 				if (score >= max) {
