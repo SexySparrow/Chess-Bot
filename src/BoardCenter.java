@@ -102,9 +102,9 @@ public class BoardCenter {
 
 				Pair pair;
 				ArrayList<Move> moves = new ArrayList<>();
-				if(ok_black==true)
-					pair = minimax_abeta(board, false, 4);
-				else pair = minimax_abeta(board, true, 4);
+				if(ok_black)
+					pair = minimax_abeta(board, false, 4, false);
+				else pair = minimax_abeta(board, true, 4, true);
 				
 				makeTheMove(board, pair.second);
 				continue;
@@ -143,8 +143,8 @@ public class BoardCenter {
 
 					
 				if(ok_black)
-					pair = minimax_abeta(board, false, 4);
-				else pair = minimax_abeta(board, true, 4);
+					pair = minimax_abeta(board, false, 4, false);
+				else pair = minimax_abeta(board, true, 4, true);
 				
 				makeTheMove(board, pair.second);
 			}
@@ -275,6 +275,8 @@ public class BoardCenter {
 	}
 
 	public static boolean apply_move(Piece[][] board, Move move) {
+		if(move == null)
+			return false;
 		if (move.start_x == -1 || move.start_y == -1 || move.final_x == -1 || move.final_y == -1)
 			return false;
 		board[move.final_x][move.final_y] = board[move.start_x][move.start_y];
@@ -286,13 +288,13 @@ public class BoardCenter {
 
 		ArrayList<Move> moves = get_moves(board, !color);
 		for (Move move : moves) {
-			if (move.value == 10000)
+			if (board[move.final_x][move.final_y] instanceof King)
 				return true;
 		}
 		return false;
 	}
 
-	public static Pair minimax_abeta(Piece[][] board, boolean color, int depth) {
+	public static Pair minimax_abeta(Piece[][] board, boolean color, int depth, boolean player_color) {
 
 		if (depth == 0)
 			return new Pair(eval(board, color), new Move());
@@ -306,9 +308,9 @@ public class BoardCenter {
 		int max = Integer.MIN_VALUE;
 		for (Move move : moves) {
 			Piece[][] clone = clone(board);
-			if (apply_move(clone, move) && !isCheck(clone, color)) {
+			if (apply_move(clone, move) && !isCheck(clone, player_color)) {
 				ok=true;
-				Pair pair = minimax_abeta(clone, !color, depth - 1);
+				Pair pair = minimax_abeta(clone, !color, depth - 1, player_color);
 				int score = -pair.first;
 				
 				if (score >= max) {
@@ -317,7 +319,6 @@ public class BoardCenter {
 					//System.out.println(bestMove.value + " " + bestMove.final_x + " " + bestMove.final_y);
 				}
 
-				
 			}
 
 		}
