@@ -31,6 +31,7 @@ da seama ca se afla in sah, si returneaza un illegal move (misca alta piesa).
 Contributia membrilor:
                 
     Brabete Adrian - Mutarile tuturor pieselor, transformare in regine, schimbarea
+                
 culorii botului
                   
     Popescu Bogdan - Algoritmul Negamax, verificare sah
