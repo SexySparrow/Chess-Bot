@@ -66,50 +66,159 @@ recognized 'normal' (-1) as variant normal
 GameEnds(0, (null), 2)
 shuffleOpenings = 0
 StartChildProcess (dir=".") java BoardCenter
-339 >first : xboard
+369 >first : xboard
 protover 2
-367 <first : feature sigint=0 sigterm=0 done=1
-367 >first : accepted sigint
-367 >first : accepted sigterm
-367 >first : accepted done
-368 >first : new
+403 <first : feature sigint=0 sigterm=0 done=1
+403 >first : accepted sigint
+403 >first : accepted sigterm
+403 >first : accepted done
+404 >first : new
 random
-368 >first : level 40 5 0
-368 >first : post
-368 >first : hard
+404 >first : level 40 5 0
+404 >first : post
+404 >first : hard
 nps: w=-1, b=-1
 nps: w=-1, b=-1
-3042 >first : time 30000
-3042 >first : otim 30000
+2966 >first : time 30000
+2966 >first : otim 30000
 book hit = (NULL)
-3042 >first : e2e4
-3122 <first : move g8h6
-5035 >first : time 29992
-5035 >first : otim 29808
+2966 >first : e2e4
+3040 <first : move g8h6
+4895 >first : time 29992
+4895 >first : otim 29814
 book hit = (NULL)
-5035 >first : f2f3
-5113 <first : move h8g8
-6538 >first : time 29984
-6538 >first : otim 29666
+4895 >first : f2f4
+4969 <first : move h8g8
+8827 >first : time 29985
+8827 >first : otim 29428
 book hit = (NULL)
-6538 >first : d2d3
-6612 <first : move g8h8
-7846 >first : time 29976
-7846 >first : otim 29542
+8827 >first : g2g4
+8901 <first : move g8h8
+Reset(1, 1) from gameMode 2
+recognized 'normal' (-1) as variant normal
+GameEnds(0, (null), 2)
+22832 >first : force
+shuffleOpenings = 0
+22834 >first : new
+random
+22834 >first : level 40 5 0
+22834 >first : post
+22834 >first : hard
+nps: w=-1, b=-1
+nps: w=-1, b=-1
+24630 >first : time 30000
+24630 >first : otim 30000
 book hit = (NULL)
-7846 >first : c2c4
-7922 <first : move h8g8
-9444 >first : time 29969
-9444 >first : otim 29390
+24630 >first : g2g4
+24704 <first : move g8h6
+27670 >first : time 29992
+27670 >first : otim 29703
 book hit = (NULL)
-9444 >first : b2b4
-9523 <first : move g8h8
-11179 >first : time 29961
-11179 >first : otim 29225
+27671 >first : a2a4
+27746 <first : move h8g8
+Reset(1, 1) from gameMode 2
+recognized 'normal' (-1) as variant normal
+GameEnds(0, (null), 2)
+30047 >first : force
+shuffleOpenings = 0
+30048 >first : new
+random
+30048 >first : level 40 5 0
+30048 >first : post
+30048 >first : hard
+nps: w=-1, b=-1
+nps: w=-1, b=-1
+31859 >first : time 30000
+31859 >first : otim 30000
 book hit = (NULL)
-11179 >first : a2a4
-11257 <first : move h8g8
+31859 >first : c2c3
+31932 <first : move g8h6
+33173 >first : time 29992
+33173 >first : otim 29875
+book hit = (NULL)
+33173 >first : g2g4
+33250 <first : move h8g8
+51767 >first : time 29985
+51767 >first : otim 28024
+book hit = (NULL)
+51767 >first : b1a3
+51868 <first : move g8h8
+53251 >first : time 29974
+53251 >first : otim 27886
+book hit = (NULL)
+53251 >first : a3c4
+53345 <first : move h8g8
+55660 >first : time 29965
+55660 >first : otim 27654
+book hit = (NULL)
+55660 >first : e2e4
+55736 <first : move g8h8
+57676 >first : time 29957
+57677 >first : otim 27460
+book hit = (NULL)
+57677 >first : e4e5
+57753 <first : move h8g8
+63332 >first : time 29950
+63332 >first : otim 26902
+book hit = (NULL)
+63332 >first : d1e2
+63408 <first : move g8h8
+66031 >first : time 29942
+66031 >first : otim 26640
+book hit = (NULL)
+66031 >first : e2d3
+66107 <first : move h8g8
+69221 >first : time 29934
+69221 >first : otim 26329
+book hit = (NULL)
+69221 >first : d3d7
+69318 <first : move e8d7
+103366 >first : time 29925
+103366 >first : otim 22924
+book hit = (NULL)
+103366 >first : d2d4
+103443 <first : move g8h8
+106085 >first : time 29917
+106085 >first : otim 22660
+book hit = (NULL)
+106085 >first : c1h6
+106186 <first : move h8g8
+107655 >first : time 29907
+107655 >first : otim 22513
+book hit = (NULL)
+107655 >first : h6g7
+107731 <first : move g8h8
+108578 >first : time 29899
+108578 >first : otim 22428
+book hit = (NULL)
+108578 >first : g7h8
+108653 <first : move f8h6
+120762 >first : time 29892
+120762 >first : otim 21217
+book hit = (NULL)
+120762 >first : e1e2
+120840 <first : move d8h8
+121786 >first : time 29884
+121786 >first : otim 21123
+book hit = (NULL)
+121786 >first : e2f3
+121861 <first : move h8d8
+123350 >first : time 29876
+123350 >first : otim 20974
+book hit = (NULL)
+123350 >first : f3e4
+123424 <first : move d8h8
+132329 >first : time 29869
+132329 >first : otim 20083
+book hit = (NULL)
+132329 >first : g4g5
+132405 <first : move h8d8
+133415 >first : time 29861
+133415 >first : otim 19982
+book hit = (NULL)
+133415 >first : g5h6
+133489 <first : move d8h8
 GameEnds(29, xboard exit, 2)
-23527 >first : result * {xboard exit}
-23528 >first : force
-23530 >first : quit
+148482 >first : result * {xboard exit}
+148482 >first : force
+148482 >first : quit

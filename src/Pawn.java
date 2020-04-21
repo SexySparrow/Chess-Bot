@@ -5,7 +5,7 @@ public class Pawn extends Piece {
     public Pawn(boolean color)
     {
         this.color = color;
-        this.value = 50;
+        this.value = 10;
     }
 
     @Override

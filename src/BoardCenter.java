@@ -44,6 +44,7 @@ public class BoardCenter {
 		boolean quit = false;
 		boolean black = false;
 		boolean white = false;
+		boolean player = false;
 		String move;
 		while (true) {
 
@@ -70,7 +71,6 @@ public class BoardCenter {
 			}
 			if (move.equals("white")) {
 				if (black) {
-					//flipMatrix(board);
 					force = false;
 					myPiece_i = 1;
 					myPiece_j = findmyPawn(board, true);
@@ -89,7 +89,7 @@ public class BoardCenter {
 				break;
 			}
 
-			if ((move.length() == 4 && ((move.charAt(1) - 48) - 1) < 9) || black || white) {
+			if (((move.length() == 4 || move.length() == 5) && ((move.charAt(1) - 48) - 1) < 9) || black || white) {
 				if (!black && !white) {
 					int j1 = (move.charAt(0) - 'a');
 					int i1 = (move.charAt(1) - 48) - 1;
@@ -102,13 +102,20 @@ public class BoardCenter {
 						myPiece_i = i2;
 						myPiece_j = j2;
 					}
+
+					if(move.length() == 5 && move.charAt(4) == 'q'){
+						board[i2][j2] = new Queen(!player);
+					}
 				}
 				if (force)
 					continue;
 				black = false;
 				white = false;
 				ArrayList<Move> moves = new ArrayList<>();
-				Pair pair = minimax_abeta(board, false, 3, Integer.MIN_VALUE, Integer.MAX_VALUE);
+				Pair pair = minimax_abeta(board, player, 2, Integer.MIN_VALUE, Integer.MAX_VALUE);
+				//System.out.println(pair.second.value);
+				if(!moveisValid(board,pair.second))
+					break;
 				if (pair.second.value == -5 ) {
 					moves.removeIf(elem -> !moveisValid(board, elem));
 
@@ -138,10 +145,10 @@ public class BoardCenter {
 		if (move.final_x < 0 || move.final_y > 7)
 			return false;
 
-		if (board[move.start_x][move.start_y] == null)
-			return false;
-		if (board[move.final_x][move.final_y] != null)
-			return board[move.start_x][move.start_y].color != board[move.final_x][move.final_x].color;
+//		if (board[move.start_x][move.start_y] == null)
+//			return false;
+//		if (board[move.final_x][move.final_y] != null)
+//			return board[move.start_x][move.start_y].color != board[move.final_x][move.final_x].color;
 		return true;
 	}
 
@@ -226,8 +233,7 @@ public class BoardCenter {
 		Piece[][] clone = new Piece[8][8];
 
 		for (int i = 0; i < 8; i++)
-			for (int j = 0; j < 8; j++)
-				clone[i][j] = board[i][j];
+			System.arraycopy(board[i], 0, clone[i], 0, 8);
 		return clone;
 
 	}
@@ -263,6 +269,7 @@ public class BoardCenter {
 			if (apply_move(clone, move) && !isCheck(clone, color)) {
 
 				Pair pair = minimax_abeta(clone, color, depth - 1, -beta, -alfa);
+				//bestMove = pair.second;
 				int score = -pair.first;
 
 				if (score >= alfa) {
