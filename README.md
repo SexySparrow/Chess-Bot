@@ -15,9 +15,9 @@ Contributia membrilor:
                     
     Brabete Adrian - Miscarile pionului, alegerea piesei, New Game
                   
-    Popescu Bogdan - Interpretarea comenzilor Xboard: White,Black,Force
-                  
-    Dumitrescu Ioana - ierarhia de clase 
+    Popescu Bogdan - Ierarhia de clase, 
+    Interpretarea comenzilor Xboard: White,Black,Force
+  
     
 Etapa II:
     In stadiul actual programul stie sa mute toate piesele si sa iasa din sah.
