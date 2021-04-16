@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public abstract class Piece {
     //true is for white
-    //false is for niggers
+    //false is for black
     public boolean color = true;
     public int value;
 
